@@ -1,1 +1,5 @@
-# IDW-grupo-31-trabajo-final-integrador
+# IDW UNER - Grupo 31 - Trabajo Final Integrador
+
+## Integrantes:
+
+### - Checura, Alexis Nehuen
