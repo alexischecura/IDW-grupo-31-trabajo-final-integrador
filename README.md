@@ -3,3 +3,5 @@
 ## Integrantes:
 
 ### - Checura, Alexis Nehuen
+
+### - Saidi Taoufik
