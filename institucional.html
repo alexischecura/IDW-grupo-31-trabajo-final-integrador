@@ -1,53 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Información Institucional</title>
-  <link rel="stylesheet" href="./css/estilos.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros | IDW S.A</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <h1>Mi Proyecto Web</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="institucional.html">Institucional</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="institucional.html" class="active">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>¿Quiénes somos?</h2>
-      <p>Somos una organización dedicada a promover el aprendizaje de tecnologías web y el trabajo en equipo a través de proyectos colaborativos y educativos.</p>
-    </section>
-
-    <section>
-      <h2>Misión</h2>
-      <p>Fomentar el desarrollo de habilidades digitales mediante el uso de herramientas modernas, promoviendo la creatividad, la inclusión y el compromiso académico.</p>
-    </section>
-
-    <section>
-      <h2>Visión</h2>
-      <p>Ser referentes en la formación digital dentro del ámbito educativo, destacando por la innovación, la colaboración y la excelencia en cada proyecto realizado.</p>
-    </section>
-
-    <section>
-      <h2>Valores</h2>
-      <ul>
-        <li>Trabajo en equipo</li>
-        <li>Responsabilidad</li>
-        <li>Creatividad</li>
-        <li>Compromiso</li>
-      </ul>
+    <section class="about">
+      <div class="container">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Nuestra Historia</h3>
+            <p>Desde 2010, en <strong>IDW S.A</strong> nos especializamos en crear fiestas infantiles inolvidables. Lo que comenzó como un pequeño salón en el centro de la ciudad, hoy es una red de espacios temáticos en todo el país.</p>
+            
+            <h3>Misión</h3>
+            <p>Convertir los sueños de los más pequeños en realidad, ofreciendo salones únicos y servicios personalizados que hacen de cada cumpleaños una experiencia mágica.</p>
+            
+            <h3>Valores</h3>
+            <ul class="values-list">
+              <li><i class="fas fa-check-circle"></i> Creatividad e innovación</li>
+              <li><i class="fas fa-check-circle"></i> Seguridad garantizada</li>
+              <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+            </ul>
+          </div>
+          
+          <div class="about-image">
+            <img src="images/equipo.jpg" alt="Nuestro equipo" loading="lazy">
+          </div>
+        </div>
+        
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-number">13+</span>
+            <span class="stat-label">Años de experiencia</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Salones temáticos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10,000+</span>
+            <span class="stat-label">Fiestas realizadas</span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 - Mi Proyecto Web | Todos los derechos reservados</p>
+    <div class="container">
+      <p>© 2025 IDW S.A - Todos los derechos reservados</p>
+    </div>
   </footer>
 </body>
 </html>
-
