@@ -6,4 +6,8 @@
 
 ### - Saidi Taoufik
 
-### -Lobos, Rita Maria Victoria
+### - Lobos, Rita Maria Victoria
+
+### - Villasmil Mairene
+
+### - Sergio Zemborain
