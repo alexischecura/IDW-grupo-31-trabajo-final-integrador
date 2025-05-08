@@ -501,3 +501,50 @@ footer p {
     gap: 1.5rem;
   }
 }
+
+/* +++ Estilos para el aside institucional +++ */
+/* Eventos destacados */
+.date-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.date-circle .day {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.date-circle .month {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.bg-accent {
+  background-color: var(--accent) !important;
+}
+
+/* Testimonio */
+.card-testimonial {
+  border-left: 4px solid var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  aside {
+    margin-top: 3rem;
+  }
+  
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .about-image {
+    margin-top: 2rem;
+  }
+}
