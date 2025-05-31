@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
-  <!-- Header/Navbar -->
   <header class="sticky-top bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
       <div class="container">
@@ -23,17 +22,16 @@
             <li class="nav-item"><a class="nav-link active px-3 py-2 rounded-5" href="#">Inicio</a></li>
             <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="institucional.html">Nosotros</a></li>
             <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="contacto.html">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="loginAdmin.html">Administración</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Main Content -->
   <main class="flex-grow-1">
-    <!-- Hero Section -->
     <section class="hero position-relative overflow-hidden" style="height: 70vh;">
-      <div class="carousel position-absolute w-100 h-100">
+      <div id="heroCarousel" class="carousel slide position-absolute w-100 h-100" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-inner h-100">
           <div class="carousel-item active h-100">
             <img src="images/cumpleanios1.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Fiesta infantil temática" loading="lazy">
@@ -56,104 +54,18 @@
       </div>
     </section>
 
-    <!-- Salones -->
     <section class="py-5">
       <div class="container">
         <h2 class="text-center mb-5 display-5 fw-bold position-relative pb-3">Salones Destacados
           <span class="position-absolute bottom-0 start-50 translate-middle-x bg-primary rounded" style="height: 4px; width: 100px;"></span>
         </h2>
         
-        <div class="row g-4">
-          <!-- Salón Cielo -->
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
-              <img src="images/salaCielo.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Cielo" loading="lazy">
-              <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title fs-4">Salón Cielo</h5>
-                <p class="text-muted mb-2">Av. Fiesta 123</p>
-                <p class="card-text mb-3">Espacio amplio con temática celestial, ideal para una fiesta mágica entre las nubes.</p>
-                <p class="fw-bold fs-5 text-primary mb-3">$60000 por evento</p>
-                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
-              </div>
-            </div>
+        <div class="row g-4" id="salones-container">
           </div>
-          
-          
-          <!-- Salón CasaBlanca -->
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
-              <img src="images/sala-casablanca.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón CasaBlanca" loading="lazy">
-              <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title fs-4">Salón CasaBlanca</h5>
-                <p class="text-muted mb-2">Calle Diversión 456</p>
-                <p class="card-text mb-3">Diseño moderno y acogedor, perfecto para celebrar con un toque de glamour.</p>
-                <p class="fw-bold fs-5 text-primary mb-3">$70000 por evento</p>
-                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Salón Arco Iris -->
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
-              <img src="images/salaArco.webp" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Arco Iris" loading="lazy">
-              <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title fs-4">Salón Arco Iris</h5>
-                <p class="text-muted mb-2">Ruta Colorida 789</p>
-                <p class="card-text mb-3">Entorno vibrante y lleno de color, donde la diversión nunca termina.</p>
-                <p class="fw-bold fs-5 text-primary mb-3">$90000 por evento</p>
-                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Salón Lawn Party -->
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
-              <img src="images/salaLawn.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Lawn Party" loading="lazy">
-              <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title fs-4">Salón Lawn Party</h5>
-                <p class="text-muted mb-2">Blvd. Juego 321</p>
-                <p class="card-text mb-3">Toque natural y aire libre, ideal para juegos y entretenimiento al estilo picnic.</p>
-                <p class="fw-bold fs-5 text-primary mb-3">$90000 por evento</p>
-                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Salón Fantasía -->
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
-              <img src="images/sala-fantasia.jpeg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Fantasía" loading="lazy">
-              <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title fs-4">Salón Fantasía</h5>
-                <p class="text-muted mb-2">Camino Magia 654</p>
-                <p class="card-text mb-3">Un mundo de imaginación con decorados de cuentos de hadas.</p>
-                <p class="fw-bold fs-5 text-primary mb-3">$40000 por evento</p>
-                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Salón Pirata -->
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
-              <img src="images/sala-pirata.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Pirata" loading="lazy">
-              <div class="card-body text-center d-flex flex-column">
-                <h5 class="card-title fs-4">Salón Pirata</h5>
-                <p class="text-muted mb-2">Isla Aventura 987</p>
-                <p class="card-text mb-3">Aventura marina con barcos y tesoros para los pequeños exploradores.</p>
-                <p class="fw-bold fs-5 text-primary mb-3">$65000 por evento</p>
-                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-dark text-white pt-5 pb-4">
     <div class="container">
       <div class="row">
@@ -170,6 +82,7 @@
             <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Inicio</a></li>
             <li class="mb-2"><a href="institucional.html" class="text-white text-decoration-none">Nosotros</a></li>
             <li class="mb-2"><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
+            <li class="mb-2"><a href="loginAdmin.html" class="text-white text-decoration-none">Administración</a></li>
           </ul>
         </div>
 
@@ -198,12 +111,49 @@
       <hr class="my-4 bg-light">
 
       <div class="text-center pt-2">
-        <p class="mb-0">&copy; 2025 IDW S.A - Todos los derechos reservados</p>
+        <p class="mb-0">© 2025 IDW S.A - Todos los derechos reservados</p>
       </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- 
+  <script type="module">
+    // Importar la función para obtener salones desde salones.js
+    import { obtenerSalones } from './js/salones.js';
+
+    /**Cargar y renderiza los salones en la página principal.*/
+    function cargarSalonesEnIndex() {
+        const salonesContainer = document.getElementById('salones-container');
+        salonesContainer.innerHTML = ''; // Limpiar el contenido actual
+
+        const salones = obtenerSalones(); // aBtener todos los salones de LocalStorage
+
+        if (salones.length === 0) {
+            salonesContainer.innerHTML = `<div class="col-12 text-center py-4">No hay salones disponibles en este momento.</div>`;
+            return;
+        }
+
+        salones.forEach(salon => {
+            const cardHTML = `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+                        <img src="images/${salon.imagen || 'placeholder.png'}" class="card-img-top object-fit-cover" style="height: 200px;" alt="${salon.nombre}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x150/cccccc/333333?text=Imagen+No+Disponible';">
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5 class="card-title fs-4">${salon.nombre}</h5>
+                            <p class="text-muted mb-2">${salon.direccion}</p>
+                            <p class="card-text mb-3">${salon.descripcion}</p>
+                            <p class="fw-bold fs-5 text-primary mb-3">$${salon.precio.toLocaleString('es-AR')} por evento</p>
+                            <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            salonesContainer.insertAdjacentHTML('beforeend', cardHTML);
+        });
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', cargarSalonesEnIndex);
+  </script>
 </body>
 </html>
