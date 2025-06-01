@@ -1,49 +1,142 @@
 export function renderNosotros(container) {
-    container.innerHTML = `
-      <section class="about">
-        <div class="container">
-          <h2 class="section-title">Sobre Nosotros</h2>
-          
-          <div class="about-content d-flex flex-wrap align-items-center gap-4">
-            <div class="about-text flex-grow-1">
-              <h3>Nuestra Historia</h3>
-              <p>Desde 2010, en <strong>IDW S.A</strong> nos especializamos en crear fiestas infantiles inolvidables. Lo que comenzó como un pequeño salón en el centro de la ciudad, hoy es una red de espacios temáticos en todo el país.</p>
-              
-              <h3>Misión</h3>
-              <p>Convertir los sueños de los más pequeños en realidad, ofreciendo salones únicos y servicios personalizados que hacen de cada cumpleaños una experiencia mágica.</p>
-              
-              <h3>Valores</h3>
-              <ul class="values-list list-unstyled">
-                <li><i class="fas fa-check-circle text-primary me-2"></i>Creatividad e innovación</li>
-                <li><i class="fas fa-check-circle text-primary me-2"></i>Seguridad garantizada</li>
-                <li><i class="fas fa-check-circle text-primary me-2"></i>Atención personalizada</li>
-              </ul>
-            </div>
-            
-            <div class="about-image flex-shrink-0" style="max-width: 400px;">
-              <img src="images/equipo.jpg" alt="Nuestro equipo" loading="lazy" class="img-fluid rounded shadow" />
-            </div>
+  const data = [
+    { tipo: 'testimonio', texto: 'El mejor cumpleaños...', autor: 'Laura M.', valoracion: 5 },
+    { tipo: 'testimonio', texto: 'Muy divertido y seguro', autor: 'Carlos R.', valoracion: 4 },
+    { tipo: 'testimonio', texto: 'Nos ayudaron con todo, muy atentos.', autor: 'Sandra P.', valoracion: 5 },
+    { tipo: 'testimonio', texto: '¡Increíble ambientación!', autor: 'Esteban G.', valoracion: 5 },
+    { tipo: 'testimonio', texto: 'Todo salió perfecto, gracias.', autor: 'Lucía V.', valoracion: 4 },
+    { tipo: 'testimonio', texto: 'Mi hija lo disfrutó al máximo.', autor: 'Raúl D.', valoracion: 5 },
+
+    { tipo: 'evento', nombre: 'Taller de Magia', fecha: '2025-06-15', hora: '17:00', lugar: 'Salón Fantasía' },
+    { tipo: 'evento', nombre: 'Fiesta Temática Pirata', fecha: '2025-06-22', hora: '16:00', lugar: 'Salón Pirata' },
+    { tipo: 'evento', nombre: 'Show de Payasos', fecha: '2025-07-01', hora: '15:00', lugar: 'Salón Arcoíris' },
+    { tipo: 'evento', nombre: 'Festival de Cuentos', fecha: '2025-07-10', hora: '18:00', lugar: 'Salón Bosque Encantado' }
+  ];
+
+  const testimonios = data.filter(d => d.tipo === 'testimonio');
+  const eventos = data.filter(d => d.tipo === 'evento');
+
+  const renderStars = (count) =>
+    '<i class="fas fa-star text-warning me-1"></i>'.repeat(count);
+
+  const testimoniosItems = testimonios.map((t, i) => `
+    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+      <div class="text-center px-4">
+        <i class="fas fa-quote-left text-primary mb-3 fs-2"></i>
+        <p class="mb-3">"${t.texto}"</p>
+        <div class="mb-2">${renderStars(t.valoracion)}</div>
+        <h4 class="h6 mb-0">${t.autor}</h4>
+      </div>
+    </div>
+  `).join('');
+
+  const eventosItems = eventos.map((e, i) => {
+    const fecha = new Date(e.fecha);
+    const dia = fecha.getDate();
+    const mes = fecha.toLocaleString('es-AR', { month: 'short' }).toUpperCase();
+    return `
+      <div class="carousel-item ${i === 0 ? 'active' : ''}">
+        <div class="d-flex align-items-center px-4">
+          <div class="bg-accent text-white text-center rounded-3 me-3 p-2" style="width: 50px;">
+            <div class="fw-bold">${dia}</div>
+            <div class="small">${mes}</div>
           </div>
-          
-          <div class="stats d-flex justify-content-around text-center mt-5">
-            <div class="stat-item">
-              <span class="stat-number fs-3 fw-bold">13+</span>
-              <br>
-              <span class="stat-label">Años de experiencia</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number fs-3 fw-bold">50+</span>
-              <br>
-              <span class="stat-label">Salones temáticos</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number fs-3 fw-bold">10,000+</span>
-              <br>
-              <span class="stat-label">Fiestas realizadas</span>
-            </div>
+          <div>
+            <h4 class="h6 mb-1">${e.nombre}</h4>
+            <p class="small text-muted mb-0">${e.lugar} - ${e.hora} hs</p>
           </div>
         </div>
-      </section>
+      </div>
     `;
-  }
-  
+  }).join('');
+
+  container.innerHTML = `
+    <main class="flex-grow-1 py-5" data-section="nosotros">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <section class="about">
+              <h2 class="display-5 fw-bold mb-4 position-relative pb-3">Sobre Nosotros
+                <span class="position-absolute bottom-0 start-0 bg-primary rounded" style="height: 4px; width: 80px;"></span>
+              </h2>
+
+              <article class="mb-5">
+                <h3 class="h4 text-primary mb-3">Nuestra Historia</h3>
+                <p>Desde 2010, en <strong>IDW S.A</strong> nos especializamos en crear fiestas infantiles inolvidables...</p>
+
+                <div class="row align-items-center mt-4">
+                  <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="images/equipo.jpg" alt="Nuestro equipo" loading="lazy" class="img-fluid rounded shadow" />
+                  </div>
+                  <div class="col-md-6">
+                    <h3 class="h4 text-primary mb-3">Misión</h3>
+                    <p>Convertir los sueños de los más pequeños en realidad...</p>
+                  </div>
+                </div>
+              </article>
+
+              <article>
+                <h3 class="h4 text-primary mb-3">Valores</h3>
+                <ul class="list-unstyled">
+                  <li class="mb-2 d-flex align-items-start">
+                    <i class="fas fa-check-circle text-primary me-2 mt-1"></i> Creatividad e innovación
+                  </li>
+                  <li class="mb-2 d-flex align-items-start">
+                    <i class="fas fa-check-circle text-primary me-2 mt-1"></i> Seguridad garantizada
+                  </li>
+                  <li class="mb-2 d-flex align-items-start">
+                    <i class="fas fa-check-circle text-primary me-2 mt-1"></i> Atención personalizada
+                  </li>
+                </ul>
+                <div class="row text-center mt-5 g-4">
+                  <div class="col-md-4"><div class="bg-light p-4 rounded">
+                    <span class="d-block fs-2 fw-bold text-primary mb-2">12+</span><span class="text-muted">Años</span>
+                  </div></div>
+                  <div class="col-md-4"><div class="bg-light p-4 rounded">
+                    <span class="d-block fs-2 fw-bold text-primary mb-2">500+</span><span class="text-muted">Eventos</span>
+                  </div></div>
+                  <div class="col-md-4"><div class="bg-light p-4 rounded">
+                    <span class="d-block fs-2 fw-bold text-primary mb-2">98%</span><span class="text-muted">Satisfacción</span>
+                  </div></div>
+                </div>
+              </article>
+            </section>
+          </div>
+
+          <aside class="col-lg-4 mt-5 mt-lg-0">
+            <div class="card shadow-sm border-0 mb-4">
+              <div class="card-header bg-primary text-white">
+                <h3 class="h5 mb-0"><i class="fas fa-calendar-star me-2"></i>Próximos Eventos</h3>
+              </div>
+              <div class="card-body">
+                <div id="eventosCarousel" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">${eventosItems}</div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#eventosCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#eventosCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm border-0 border-start border-3 border-primary">
+              <div class="card-body">
+                <div id="testimoniosCarousel" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">${testimoniosItems}</div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  `;
+}

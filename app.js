@@ -3,6 +3,7 @@ import { renderContacto } from './routes/contacto.js';
 import { renderNotFound } from './routes/notfound.js';
 import { renderNosotros } from './routes/nosotros.js';
 import { renderModal } from './routes/modal.js';
+import { renderFooter } from './routes/footer.js';
 
 const app = document.getElementById('app');
 const navbar = document.getElementById('navbar');
@@ -94,13 +95,11 @@ function setupNavbar() {
 
   navbar.querySelector('#searchInput').addEventListener('input', (e) => {
     const texto = e.target.value.trim().toLowerCase();
+    const path = getPath();
+    if (path === 'contacto' || path === 'nosotros') return;
+
     if (texto === '') {
-      const path = getPath();
-      if (path === 'contacto' || path === 'nosotros') {
-        route();
-      } else {
-        route(path || 'todos');
-      }
+      route(path || 'todos');
     } else {
       filtrarTarjetas(texto);
     }
@@ -144,7 +143,6 @@ function filtrarTarjetas(texto) {
 
 async function route(path = null) {
   if (!path) path = getPath();
-  console.log('Ruta detectada:', path);
 
   if (path === '' || path === 'todos') {
     mostrarSolo('inicio');
@@ -171,7 +169,7 @@ async function route(path = null) {
     await renderWithFade(renderContacto, app, queryParams);
   } else if (path === 'nosotros') {
     mostrarSolo('nosotros');
-    await renderWithFade(renderNosotros, app);
+    await renderWithFade(renderNosotros, app, dataGlobal);
   } else if (path === 'login') {
     const { renderLogin } = await import('./routes/login.js');
     await renderWithFade(renderLogin, app);
@@ -218,6 +216,15 @@ async function renderWithFade(renderFn, container, ...args) {
   await fadeOut(container);
   container.innerHTML = '';
   await renderFn(container, ...args);
+
+  const existingFooter = document.getElementById('footer');
+  if (existingFooter) existingFooter.remove();
+
+  const footer = document.createElement('div');
+  footer.id = 'footer';
+  renderFooter(footer);
+  container.appendChild(footer);
+
   await fadeIn(container);
 }
 

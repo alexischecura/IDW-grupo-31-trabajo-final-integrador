@@ -1,7 +1,12 @@
 import { renderModal } from './modal.js'
 
 export function renderHome(container, data, filtro = 'todos') {
-  container.innerHTML = `<h2>Salones y Servicios</h2>`;
+  let titulo = 'Salones y Servicios';
+  if (filtro === 'testimonio') titulo = 'Testimonios';
+  else if (filtro === 'salon') titulo = 'Salones';
+  else if (filtro === 'servicio') titulo = 'Servicios';
+
+  container.innerHTML = `<h2>${titulo}</h2>`;
 
   const filtrados = filtro === 'todos' ? data : data.filter(item => item.tipo === filtro);
 
@@ -17,13 +22,14 @@ export function renderHome(container, data, filtro = 'todos') {
     const card = document.createElement('div');
     card.className = 'card';
 
+    card.setAttribute('data-tipo', item.tipo);
+
     card.innerHTML = `
       <img src="${item.imagen}" alt="${item.nombre}" class="card-img" />
       <h5>${item.nombre}</h5>
       <p>${item.descripcion.slice(0, 60)}...</p>
       <button class="btn-detalle">Ver detalle</button>
     `;
-
 
     card.querySelector('.btn-detalle').addEventListener('click', () => {
       renderModal(item);

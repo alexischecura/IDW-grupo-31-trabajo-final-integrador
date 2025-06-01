@@ -41,7 +41,7 @@ nav {
   margin-right: 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
-  width: 200px;
+  width: 300px;
 }
 
 main {
@@ -406,13 +406,15 @@ button#volver:hover {
   width: 90%;
   height: 90%;
   background-color: rgba(0, 0, 0, 0.6);
-  display: flex !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
   justify-content: center;
   align-items: center;
   z-index: 999;
   animation: fadeIn 0.3s ease-out;
+}
+
+.modal.show,
+.custom-modal.show {
+  display: flex;
 }
 
 .modal-content {
@@ -527,5 +529,93 @@ button#volver:hover {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+footer{
+  background: #005f73;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f97316; 
+}
+
+footer ul li button:hover {
+  text-decoration: underline;
+}
+
+.modal-content {
+  animation: popUp 0.3s ease;
+}
+
+@keyframes popUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.card-body.d-flex.overflow-auto {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.testimonial-slide {
+  flex: 0 0 auto;
+  max-width: 280px;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.event-slide {
+  flex: 0 0 auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.text-warning i.fas.fa-star {
+  color: #ffc107;
+  margin: 0 2px;
+}
+
+.bg-accent {
+  background-color: #6c63ff;
+}
+
+.carousel-inner {
+  min-height: 120px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #6c63ff;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  #listaEventos .list-group-item .d-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #listaEventos .list-group-item img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+  }
+
+  #listaEventos .list-group-item .flex-grow-1 {
+    width: 100%;
+  }
+
+  #listaEventos .list-group-item .d-flex.flex-column {
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
   }
 }
