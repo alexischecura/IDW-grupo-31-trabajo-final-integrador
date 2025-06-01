@@ -47,24 +47,31 @@ function mostrarSolo(id) {
     target.style.display = 'block';
   }
 }
-
 function setupNavbar() {
   navbar.innerHTML = `
-    <nav class="navbar navbar-expand-lg px-3">
-      <div class="container-fluid d-flex align-items-center justify-content-between">
-          <a class="navbar-brand" href="#" id="logo">🎈 MiSalón</a>
-          <input type="text" id="searchInput" class="form-control form-control-sm mx-3" placeholder="Buscar..." style="max-width: 300px; display:none;" />
-        <div class="btn-group btn-group-center" role="group" aria-label="Filtro botones">
-          <button class="btn btn-nav" data-filtro="todos">Todos</button>
-          <button class="btn btn-nav" data-filtro="salon">Salones</button>
-          <button class="btn btn-nav" data-filtro="servicio">Servicios</button>
-          <button class="btn btn-nav" data-filtro="contacto">Contacto</button>
-          <button class="btn btn-nav" data-filtro="nosotros">Nosotros</button>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-brand" id="logo">🎈 MiSalón</div>
+        <button class="navbar-toggle" id="navbarToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+          <button class="btn-nav" data-filtro="todos">Todos</button>
+          <button class="btn-nav" data-filtro="salon">Salones</button>
+          <button class="btn-nav" data-filtro="servicio">Servicios</button>
+          <button class="btn-nav" data-filtro="contacto">Contacto</button>
+          <button class="btn-nav" data-filtro="nosotros">Nosotros</button>
+
+          <div class="right-controls">
+            <input type="text" id="searchInput" placeholder="Buscar..." />
+            <button id="loginBtn" class="btn-login">Iniciar Sesión</button>
+          </div>
         </div>
-          <button id="loginBtn" class="btn btn-outline-dark btn-sm" title="Iniciar sesión">🔒</button>
       </div>
     </nav>
   `;
+
+  document.getElementById('navbarToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('show');
+  });
 
   document.getElementById('logo')?.addEventListener('click', () => {
     window.location.hash = '#/';
@@ -74,13 +81,11 @@ function setupNavbar() {
     btn.addEventListener('click', () => {
       const filtro = btn.getAttribute('data-filtro');
       let nuevoHash = filtro === 'todos' ? '#/' : `#/${filtro}`;
-
       if (window.location.hash === nuevoHash) {
         route(filtro === 'todos' ? '' : filtro);
       } else {
         window.location.hash = nuevoHash;
       }
-
       actualizarActivo(filtro);
     });
   });
@@ -104,16 +109,8 @@ function setupNavbar() {
   const path = getPath();
   const activo = path === '' ? 'todos' : path.split('/')[0];
   actualizarActivo(activo);
+}
 
-  const seccionConBuscador = ['', 'todos', 'salon', 'servicio'];
-  const searchInput = navbar.querySelector('#searchInput');
-  if (seccionConBuscador.includes(activo)) {
-    searchInput.style.display = 'block';
-  } else {
-    searchInput.style.display = 'none';
-    searchInput.value = '';
-  }
-} 
 
 function actualizarActivo(filtro) {
   navbar.querySelectorAll('button[data-filtro]').forEach(btn => {

@@ -2,53 +2,60 @@ export function renderAdminPanel(container, data) {
   let editIndex = null;
 
   container.innerHTML = `
-    <div class="container py-4">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Panel de Administración</h2>
-        <button id="logout" class="btn btn-outline-danger">Cerrar sesión</button>
-      </div>
-      <div class="card mb-4 shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">Agregar nuevo evento o servicio</h5>
-        </div>
-        <div class="card-body">
-          <form id="addForm" class="row g-3">
-            <div class="col-md-6">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" id="nombre" class="form-control" placeholder="Nombre del evento" required />
-            </div>
-              <div class="col-md-6">
-              <label for="descripcion" class="form-label">Descripción</label>
-              <input type="text" id="descripcion" class="form-control" placeholder="Descripción" required />
-            </div>
-            <div class="col-md-6">
-              <label for="imagen" class="form-label">Imagen (URL)</label>
-              <input type="text" id="imagen" placeholder="URL de imagen" class="form-control" required />
-              <div class="mt-3 text-center">
-                <img id="preview" src="" alt="Vista previa" class="img-fluid rounded shadow-sm" style="max-height: 200px; display: none;" />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label for="tipo" class="form-label">Tipo</label>
-              <select id="tipo" class="form-select" required>
-                <option value="" disabled selected>Seleccionar tipo</option>
-                <option value="salon">Salón</option>
-                <option value="servicio">Servicio</option>
-              </select>
-            </div>
-            <div class="col-md-2 d-grid align-self-end">
-              <button type="submit" class="btn btn-success">Agregar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">Eventos actuales</h5>
-        </div>
-        <ul class="list-group list-group-flush" id="listaEventos"></ul>
-      </div>
+    <div class="admin-container">
+  <div class="admin-header">
+    <h2>Panel de Administración</h2>
+    <button id="logout" class="btn btn-danger-outline">Cerrar sesión</button>
+  </div>
+
+  <div class="admin-card">
+    <div class="admin-card-header bg-primary text-white">
+      <h5>Agregar nuevo evento o servicio</h5>
     </div>
+    <div class="admin-card-body">
+      <form id="addForm" class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Nombre del evento" required />
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" placeholder="Descripción" required />
+        </div>
+
+        <div class="form-group">
+          <label for="imagen">Imagen (URL)</label>
+          <input type="text" id="imagen" placeholder="URL de imagen" required />
+          <div class="img-preview" style="display: none;">
+            <img id="preview" src="" alt="Vista previa" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <select id="tipo" required>
+            <option value="" disabled selected>Seleccionar tipo</option>
+            <option value="salon">Salón</option>
+            <option value="servicio">Servicio</option>
+          </select>
+        </div>
+
+        <div class="form-group align-bottom">
+          <button type="submit" class="btn btn-success">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h5>Eventos actuales</h5>
+    </div>
+    <ul class="event-list" id="listaEventos"></ul>
+  </div>
+</div>
+
   `;
 
   const form = container.querySelector('#addForm');

@@ -62,7 +62,12 @@ export function renderHome(container, data, filtro = 'todos') {
   else if (filtro === 'salon') titulo = 'Salones';
   else if (filtro === 'servicio') titulo = 'Servicios';
 
-  container.innerHTML = carruselHTML + `<h2>${titulo}</h2>`;
+  container.innerHTML = carruselHTML + `
+  <h2 class="display-5 fw-bold mb-4 position-relative pb-2">
+    ${titulo}
+    <span class="position-absolute bottom-0 start-0 bg-primary rounded" style="height: 4px; width: 80px;"></span>
+  </h2>
+`;
 
   const filtrados = filtro === 'todos' ? data : data.filter(item => item.tipo === filtro);
 
