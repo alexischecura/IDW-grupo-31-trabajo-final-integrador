@@ -50,25 +50,23 @@ function mostrarSolo(id) {
 
 function setupNavbar() {
   navbar.innerHTML = `
-    <div class="navbar-container">
-      <div class="navbar-left">
-        <span class="logo" id="logo">🎈 MiSalón</span>
+    <nav class="navbar navbar-expand-lg px-3">
+      <div class="container-fluid d-flex align-items-center justify-content-between">
+          <a class="navbar-brand" href="#" id="logo">🎈 MiSalón</a>
+          <input type="text" id="searchInput" class="form-control form-control-sm mx-3" placeholder="Buscar..." style="max-width: 300px; display:none;" />
+        <div class="btn-group btn-group-center" role="group" aria-label="Filtro botones">
+          <button class="btn btn-nav" data-filtro="todos">Todos</button>
+          <button class="btn btn-nav" data-filtro="salon">Salones</button>
+          <button class="btn btn-nav" data-filtro="servicio">Servicios</button>
+          <button class="btn btn-nav" data-filtro="contacto">Contacto</button>
+          <button class="btn btn-nav" data-filtro="nosotros">Nosotros</button>
+        </div>
+          <button id="loginBtn" class="btn btn-outline-dark btn-sm" title="Iniciar sesión">🔒</button>
       </div>
-      <div class="navbar-center">
-        <input type="text" id="searchInput" placeholder="Buscar..." />
-        <button data-filtro="todos">Todos</button>
-        <button data-filtro="salon">Salones</button>
-        <button data-filtro="servicio">Servicios</button>
-        <button data-filtro="contacto">Contacto</button>
-        <button data-filtro="nosotros">Nosotros</button>
-      </div>
-      <div class="navbar-right">
-        <button id="loginBtn" title="Iniciar sesión">🔒</button>
-      </div>
-    </div>
+    </nav>
   `;
 
-  navbar.querySelector('#logo').addEventListener('click', () => {
+  document.getElementById('logo')?.addEventListener('click', () => {
     window.location.hash = '#/';
   });
 
@@ -77,23 +75,17 @@ function setupNavbar() {
       const filtro = btn.getAttribute('data-filtro');
       let nuevoHash = filtro === 'todos' ? '#/' : `#/${filtro}`;
 
-      if (filtro === 'contacto' || filtro === 'nosotros') {
-        nuevoHash = `#/${filtro}`;
-      }
-
       if (window.location.hash === nuevoHash) {
         route(filtro === 'todos' ? '' : filtro);
       } else {
         window.location.hash = nuevoHash;
       }
 
-      if (filtro !== 'contacto' && filtro !== 'nosotros') {
-        navbar.querySelector('#searchInput').value = '';
-      }
+      actualizarActivo(filtro);
     });
   });
 
-  navbar.querySelector('#searchInput').addEventListener('input', (e) => {
+  document.getElementById('searchInput')?.addEventListener('input', (e) => {
     const texto = e.target.value.trim().toLowerCase();
     const path = getPath();
     if (path === 'contacto' || path === 'nosotros') return;
@@ -105,9 +97,32 @@ function setupNavbar() {
     }
   });
 
-  navbar.querySelector('#loginBtn').addEventListener('click', () => {
+  document.getElementById('loginBtn')?.addEventListener('click', () => {
     window.location.hash = '#/login';
   });
+
+  const path = getPath();
+  const activo = path === '' ? 'todos' : path.split('/')[0];
+  actualizarActivo(activo);
+
+  const seccionConBuscador = ['', 'todos', 'salon', 'servicio'];
+  const searchInput = navbar.querySelector('#searchInput');
+  if (seccionConBuscador.includes(activo)) {
+    searchInput.style.display = 'block';
+  } else {
+    searchInput.style.display = 'none';
+    searchInput.value = '';
+  }
+} 
+
+function actualizarActivo(filtro) {
+  navbar.querySelectorAll('button[data-filtro]').forEach(btn => {
+    const valor = btn.getAttribute('data-filtro');
+    btn.classList.toggle('active', valor === filtro);
+  });
+
+  const loginBtn = navbar.querySelector('#loginBtn');
+  loginBtn?.classList.toggle('active', filtro === 'login');
 }
 
 function filtrarTarjetas(texto) {
@@ -118,14 +133,11 @@ function filtrarTarjetas(texto) {
   let hayVisible = false;
 
   cards.forEach(card => {
-    const nombre = card.querySelector('h5').textContent.toLowerCase();
-    const descripcion = card.querySelector('p').textContent.toLowerCase();
-    if (nombre.includes(texto) || descripcion.includes(texto)) {
-      card.style.display = 'block';
-      hayVisible = true;
-    } else {
-      card.style.display = 'none';
-    }
+    const nombre = card.querySelector('h5')?.textContent.toLowerCase() || '';
+    const descripcion = card.querySelector('p')?.textContent.toLowerCase() || '';
+    const visible = nombre.includes(texto) || descripcion.includes(texto);
+    card.style.display = visible ? 'block' : 'none';
+    if (visible) hayVisible = true;
   });
 
   const mensaje = app.querySelector('.sin-resultados');
@@ -143,7 +155,13 @@ function filtrarTarjetas(texto) {
 
 async function route(path = null) {
   if (!path) path = getPath();
-
+  const searchInput = navbar.querySelector('#searchInput');
+  if (['', 'todos', 'salon', 'servicio'].includes(path)) {
+    searchInput.style.display = 'block';
+  } else {
+    searchInput.style.display = 'none';
+    searchInput.value = ''; 
+  }  
   if (path === '' || path === 'todos') {
     mostrarSolo('inicio');
     await renderWithFade(renderHome, app, dataGlobal, 'todos');
@@ -229,5 +247,4 @@ async function renderWithFade(renderFn, container, ...args) {
 }
 
 window.addEventListener('hashchange', () => route());
-
 fetchData();

@@ -66,7 +66,7 @@ export function renderNosotros(container) {
 
                 <div class="row align-items-center mt-4">
                   <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="images/equipo.jpg" alt="Nuestro equipo" loading="lazy" class="img-fluid rounded shadow" />
+                    <img src="https://media.istockphoto.com/id/1384618716/es/foto/grupo-multirracial-de-amigos-tomando-selfie-foto-afuera-felices-diferentes-j%C3%B3venes.jpg?s=612x612&w=0&k=20&c=YPn6wpnh5wjCixG93QDxISyTbvXbl4cWuyJzJKDHXrU=" alt="Nuestro equipo" loading="lazy" class="img-fluid rounded shadow" />
                   </div>
                   <div class="col-md-6">
                     <h3 class="h4 text-primary mb-3">Misión</h3>
@@ -102,13 +102,12 @@ export function renderNosotros(container) {
               </article>
             </section>
           </div>
-
           <aside class="col-lg-4 mt-5 mt-lg-0">
-            <div class="card shadow-sm border-0 mb-4">
-              <div class="card-header bg-primary text-white">
-                <h3 class="h5 mb-0"><i class="fas fa-calendar-star me-2"></i>Próximos Eventos</h3>
-              </div>
-              <div class="card-body">
+            <h3 class="h5 text-primary border-3 ps-3 mb-2">
+              <i class="fas fa-calendar-star me-2"></i>Próximos Eventos
+            </h3>
+            <div class="cardN shadow-sm border-0 border-start border-3 border-primary">
+              <div class="card-body border-primary">
                 <div id="eventosCarousel" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">${eventosItems}</div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#eventosCarousel" data-bs-slide="prev">
@@ -120,9 +119,11 @@ export function renderNosotros(container) {
                 </div>
               </div>
             </div>
-
-            <div class="card shadow-sm border-0 border-start border-3 border-primary">
-              <div class="card-body">
+            <h3 class="h5 text-primary border-3 ps-3 mb-2">
+              <i class="fas fa-comment-dots me-2"></i>Nuestros Testimonios
+            </h3>
+            <div class="cardN shadow-sm border-0 border-start border-3 border-primary">
+              <div class="card-body border-primary">
                 <div id="testimoniosCarousel" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">${testimoniosItems}</div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
