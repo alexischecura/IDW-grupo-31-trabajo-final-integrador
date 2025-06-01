@@ -22,6 +22,7 @@ nav {
   font-weight: bold;
   font-size: 1.4rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .navbar-center button,
@@ -33,13 +34,6 @@ nav {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 3px;
-}
-
-.navbar-center button:hover,
-.navbar-right button:hover,
-.navbar-left .logo:hover {
-  background: #94d2bd;
-  color: #005f73;
 }
 
 #searchInput {
@@ -155,7 +149,6 @@ button#volver:hover {
   opacity: 1;
 }
 
-/* Estilos generales para ambas secciones */
 .section-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -165,7 +158,6 @@ button#volver:hover {
   text-align: center;
 }
 
-/* ----- Sobre Nosotros ----- */
 .about-content {
   display: flex;
   flex-wrap: wrap;
@@ -218,7 +210,6 @@ button#volver:hover {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
-/* Estadísticas */
 .stats {
   display: flex;
   justify-content: center;
@@ -244,7 +235,6 @@ button#volver:hover {
   font-weight: 600;
 }
 
-/* ----- Contacto ----- */
 .contact-form label {
   font-weight: 600;
   color: #2c3e50;
@@ -283,7 +273,6 @@ button#volver:hover {
   cursor: pointer;
 }
 
-/* Contenedor del formulario */
 .contact-form {
   max-width: 500px;
   margin: 0 auto;
@@ -294,7 +283,6 @@ button#volver:hover {
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Labels */
 .contact-form label {
   display: block;
   font-weight: 700;
@@ -304,7 +292,6 @@ button#volver:hover {
   user-select: none;
 }
 
-/* Inputs y textarea */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -320,7 +307,6 @@ button#volver:hover {
   resize: vertical;
 }
 
-/* Efecto foco */
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: #2980b9;
@@ -328,14 +314,12 @@ button#volver:hover {
   outline: none;
 }
 
-/* Placeholder estilo */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
   color: #95a5a6;
   font-style: italic;
 }
 
-/* Botón */
 .btn-submit {
   width: 100%;
   background-color: #2980b9;
@@ -354,13 +338,11 @@ button#volver:hover {
   user-select: none;
 }
 
-/* Ícono dentro del botón */
 .btn-submit i {
   font-size: 1.2rem;
   line-height: 1;
 }
 
-/* Hover y active */
 .btn-submit:hover {
   background-color: #1f5d8a;
   transform: scale(1.05);
@@ -370,7 +352,6 @@ button#volver:hover {
   transform: scale(0.97);
 }
 
-/* Validaciones visuales para inputs inválidos */
 .contact-form input:invalid,
 .contact-form textarea:invalid {
   border-color: #e74c3c;
@@ -381,13 +362,12 @@ button#volver:hover {
   box-shadow: 0 0 8px rgba(231, 76, 60, 0.6);
 }
 
-/* Para inputs opcionales (ej: teléfono) */
 .contact-form input[type="tel"] {
   font-style: normal;
   color: #34495e;
 }
 
-/* Responsive */
+
 @media (max-width: 576px) {
   .contact-form {
     padding: 1.5rem 1rem;
@@ -419,7 +399,6 @@ button#volver:hover {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
-/* Fondo oscuro difuminado */
 .modal {
   position: fixed;
   top: 0;
@@ -436,7 +415,6 @@ button#volver:hover {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Contenido del modal */
 .modal-content {
   background: #fff;
   padding: 2rem;
@@ -448,7 +426,6 @@ button#volver:hover {
   animation: scaleIn 0.3s ease-out;
 }
 
-/* Botón de cerrar (X) */
 .modal-close {
   position: absolute;
   top: 1rem;
@@ -463,7 +440,6 @@ button#volver:hover {
   color: #333;
 }
 
-/* Imagen en detalle */
 .detalle-img {
   width: 100%;
   height: auto;
@@ -472,7 +448,6 @@ button#volver:hover {
   object-fit: cover;
 }
 
-/* Botón de solicitar información */
 .btn-solicitar {
   margin-top: 1.5rem;
   padding: 0.8rem 1.5rem;
@@ -489,7 +464,6 @@ button#volver:hover {
   background-color: #45a049;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0 }
   to { opacity: 1 }
@@ -506,3 +480,52 @@ button#volver:hover {
   }
 }
 
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.custom-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

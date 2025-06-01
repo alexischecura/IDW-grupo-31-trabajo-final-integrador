@@ -32,6 +32,21 @@ async function fetchData() {
   }
 }
 
+function ocultarTodo() {
+  const secciones = document.querySelectorAll('[data-section]');
+  secciones.forEach(section => {
+    section.style.display = 'none';
+  });
+}
+
+function mostrarSolo(id) {
+  ocultarTodo();
+  const target = document.querySelector(`[data-section="${id}"]`);
+  if (target) {
+    target.style.display = 'block';
+  }
+}
+
 function setupNavbar() {
   navbar.innerHTML = `
     <div class="navbar-container">
@@ -104,7 +119,7 @@ function filtrarTarjetas(texto) {
   let hayVisible = false;
 
   cards.forEach(card => {
-    const nombre = card.querySelector('h3').textContent.toLowerCase();
+    const nombre = card.querySelector('h5').textContent.toLowerCase();
     const descripcion = card.querySelector('p').textContent.toLowerCase();
     if (nombre.includes(texto) || descripcion.includes(texto)) {
       card.style.display = 'block';
@@ -132,10 +147,13 @@ async function route(path = null) {
   console.log('Ruta detectada:', path);
 
   if (path === '' || path === 'todos') {
+    mostrarSolo('inicio');
     await renderWithFade(renderHome, app, dataGlobal, 'todos');
   } else if (path === 'salon' || path === 'servicio') {
+    mostrarSolo('inicio');
     await renderWithFade(renderHome, app, dataGlobal, path);
   } else if (path.startsWith('detalles/')) {
+    mostrarSolo('inicio');
     const id = parseInt(path.split('/')[1]);
     const item = dataGlobal.find(d => d.id === id);
     if (item) {
@@ -143,18 +161,16 @@ async function route(path = null) {
     } else {
       await renderWithFade(renderNotFound, app);
     }
-  } 
-  // Aquí la magia:
-  else if (path.startsWith('contacto')) {
-    // Extraer query params después de ?
+  } else if (path.startsWith('contacto')) {
+    mostrarSolo('contacto');
     let queryParams = {};
     if (path.includes('?')) {
       const queryString = path.split('?')[1];
       queryParams = Object.fromEntries(new URLSearchParams(queryString));
     }
     await renderWithFade(renderContacto, app, queryParams);
-  } 
-  else if (path === 'nosotros') {
+  } else if (path === 'nosotros') {
+    mostrarSolo('nosotros');
     await renderWithFade(renderNosotros, app);
   } else if (path === 'login') {
     const { renderLogin } = await import('./routes/login.js');
@@ -199,16 +215,12 @@ function fadeIn(element) {
 }
 
 async function renderWithFade(renderFn, container, ...args) {
-  if (container.innerHTML.trim() !== '') {
-    await fadeOut(container);
-  }
+  await fadeOut(container);
+  container.innerHTML = '';
   await renderFn(container, ...args);
-  fadeIn(container);
+  await fadeIn(container);
 }
 
-window.addEventListener('hashchange', () => {
-  console.log('Evento hashchange detectado, ruta:', getPath());
-  route();
-});
+window.addEventListener('hashchange', () => route());
 
 fetchData();
