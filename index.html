@@ -8,8 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <script src="./scripts/main.js" defer type="module"></script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>">
 </head>
 <body class="d-flex flex-column min-vh-100">
   <!-- Header/Navbar -->
@@ -65,9 +63,92 @@
           <span class="position-absolute bottom-0 start-50 translate-middle-x bg-primary rounded" style="height: 4px; width: 100px;"></span>
         </h2>
         
-        <!--  Contenedor para los salones los cuales se cargarán dinámicamente desde el localStorage -->
-        <div class="container-salones"></div>
-
+        <div class="row g-4">
+          <!-- Salón Cielo -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+              <img src="images/salaCielo.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Cielo" loading="lazy">
+              <div class="card-body text-center d-flex flex-column">
+                <h5 class="card-title fs-4">Salón Cielo</h5>
+                <p class="text-muted mb-2">Av. Fiesta 123</p>
+                <p class="card-text mb-3">Espacio amplio con temática celestial, ideal para una fiesta mágica entre las nubes.</p>
+                <p class="fw-bold fs-5 text-primary mb-3">$60000 por evento</p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+              </div>
+            </div>
+          </div>
+          
+          
+          <!-- Salón CasaBlanca -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+              <img src="images/sala-casablanca.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón CasaBlanca" loading="lazy">
+              <div class="card-body text-center d-flex flex-column">
+                <h5 class="card-title fs-4">Salón CasaBlanca</h5>
+                <p class="text-muted mb-2">Calle Diversión 456</p>
+                <p class="card-text mb-3">Diseño moderno y acogedor, perfecto para celebrar con un toque de glamour.</p>
+                <p class="fw-bold fs-5 text-primary mb-3">$70000 por evento</p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Salón Arco Iris -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+              <img src="images/salaArco.webp" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Arco Iris" loading="lazy">
+              <div class="card-body text-center d-flex flex-column">
+                <h5 class="card-title fs-4">Salón Arco Iris</h5>
+                <p class="text-muted mb-2">Ruta Colorida 789</p>
+                <p class="card-text mb-3">Entorno vibrante y lleno de color, donde la diversión nunca termina.</p>
+                <p class="fw-bold fs-5 text-primary mb-3">$90000 por evento</p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Salón Lawn Party -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+              <img src="images/salaLawn.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Lawn Party" loading="lazy">
+              <div class="card-body text-center d-flex flex-column">
+                <h5 class="card-title fs-4">Salón Lawn Party</h5>
+                <p class="text-muted mb-2">Blvd. Juego 321</p>
+                <p class="card-text mb-3">Toque natural y aire libre, ideal para juegos y entretenimiento al estilo picnic.</p>
+                <p class="fw-bold fs-5 text-primary mb-3">$90000 por evento</p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Salón Fantasía -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+              <img src="images/sala-fantasia.jpeg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Fantasía" loading="lazy">
+              <div class="card-body text-center d-flex flex-column">
+                <h5 class="card-title fs-4">Salón Fantasía</h5>
+                <p class="text-muted mb-2">Camino Magia 654</p>
+                <p class="card-text mb-3">Un mundo de imaginación con decorados de cuentos de hadas.</p>
+                <p class="fw-bold fs-5 text-primary mb-3">$40000 por evento</p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Salón Pirata -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden transition-all">
+              <img src="images/sala-pirata.jpg" class="card-img-top object-fit-cover" style="height: 200px;" alt="Salón Pirata" loading="lazy">
+              <div class="card-body text-center d-flex flex-column">
+                <h5 class="card-title fs-4">Salón Pirata</h5>
+                <p class="text-muted mb-2">Isla Aventura 987</p>
+                <p class="card-text mb-3">Aventura marina con barcos y tesoros para los pequeños exploradores.</p>
+                <p class="fw-bold fs-5 text-primary mb-3">$65000 por evento</p>
+                <a href="#" class="btn btn-primary rounded-pill px-4 py-2 align-self-center">Reservar</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
