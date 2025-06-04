@@ -1,14 +1,24 @@
+:root {
+  --primary: #FF7EB9;
+  --secondary: #7AF0FF;
+  --accent: #FFD166;
+  --dark: #416baa;
+  --light: #F7F9FC;
+  --text-dark: #333;
+  --border-light: #ddd;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 0; padding: 0;
-  background: #f9f9f9;
-  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--light);
+  color: var(--text-dark);
 }
 
 .navbar {
-  background-color: #048ba5;
-  border-bottom: 1px solid #ddd;
-  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -18,12 +28,14 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  padding: 15px 10px;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
+  color: var(--dark);
 }
 
 .navbar-toggle {
@@ -32,6 +44,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--dark);
 }
 
 .nav-links {
@@ -46,11 +59,12 @@ body {
   cursor: pointer;
   font-size: 1rem;
   padding: 0.5rem;
+  color: var(--dark);
 }
 
 .btn-nav.active {
-  color: #fff;
-  background-color: #333;
+  color: var(--light);
+  background-color: var(--dark);
   border-radius: 5px;
 }
 
@@ -62,16 +76,17 @@ body {
 
 .right-controls input {
   padding: 0.3rem 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
 }
 
 .btn-login {
   padding: 0.3rem 0.7rem;
-  border: 1px solid #333;
+  border: 1px solid var(--dark);
   border-radius: 4px;
   background: none;
   cursor: pointer;
+  color: var(--dark);
 }
 
 @media (max-width: 768px) {
@@ -118,56 +133,61 @@ body {
   max-width: 350px;
   margin: 4rem auto;
   padding: 2rem 2.5rem;
-  background: linear-gradient(180deg, #99dcf2, #048aa5c4);
+  background: linear-gradient(180deg, var(--secondary), rgba(122, 240, 255, 0.5));
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .login-container h2 {
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-dark);
   font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: 1.5px;
 }
+
 .login-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
+  color: var(--primary);
 }
+
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 input[type="text"],
 input[type="password"] {
   padding: 0.7rem 1rem;
   border: 1.8px solid #aaa;
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-color: #048ba5;
+  border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 8px rgba(102,126,234, 0.5);
+  box-shadow: 0 0 8px rgba(255, 126, 185, 0.5);
 }
+
 button {
   padding: 0.75rem;
-  background-color: #048ba5;
+  background-color: var(--primary);
   color: white;
-  border: 2px solid #014755;
+  border: 2px solid var(--dark);
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.25s ease;
   border-radius: 8px !important;
 }
-button:hover {
-  background-color: #014755;
-}
+
 .error-msg {
   margin-top: 0.8rem;
   color: #d93025;
@@ -197,7 +217,7 @@ button:hover {
   padding: 5px;
   margin-right: 10px;
   border-radius: 3px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-light);
   width: 300px;
 }
 
@@ -212,7 +232,6 @@ main {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
   gap: 50px;
   margin-top: 20px;
 }
@@ -220,14 +239,20 @@ main {
 .card {
   width: 280px;
   height: 360px !important;
-  background: white;
-  border-radius: 6px;
+  background: var(--light);
+  border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-img {
@@ -242,14 +267,16 @@ main {
   display: inline-block;
   margin-top: auto;
   padding: 8px 12px;
-  background: #048ba5;
+  background: var(--primary);
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .btn-detalle:hover {
-  background: #0a9396;
+  background: var(--dark);
 }
 
 .detalle-img {
@@ -260,35 +287,19 @@ main {
 }
 
 button#volver {
-  background: #94d2bd;
+  background: var(--accent);
   border: none;
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   margin-bottom: 15px;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 button#volver:hover {
-  background: #005f73;
+  background: var(--dark);
   color: white;
-}
-
-.fade-exit {
-  opacity: 1;
-  transition: opacity 0.3s ease-out;
-}
-
-.fade-exit-active {
-  opacity: 0;
-}
-
-.fade-enter {
-  opacity: 0;
-  transition: opacity 0.3s ease-in;
-}
-
-.fade-enter-active {
-  opacity: 1;
 }
 
 .sin-resultados {
@@ -297,20 +308,34 @@ button#volver:hover {
   color: #777;
 }
 
+.fade-enter,
 .fade-exit {
-  opacity: 1;
   transition: opacity 0.3s ease;
 }
-.fade-exit-active {
-  opacity: 0;
-}
+
 .fade-enter {
   opacity: 0;
-  transition: opacity 0.3s ease;
 }
+
 .fade-enter-active {
   opacity: 1;
 }
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
 
 .section-title {
   font-family: 'Poppins', sans-serif;
@@ -782,7 +807,7 @@ h3.border-start {
   bottom: 0;
   z-index: 1;
   display: flex;
-  align-items: flex-end !important;
+  align-items: center !important;
   justify-content: center;
   width: 15%;
   padding: 0;
