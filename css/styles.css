@@ -341,7 +341,7 @@ button#volver:hover {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: var(--dark);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -357,12 +357,12 @@ button#volver:hover {
 .about-text {
   flex: 1 1 400px;
   font-family: 'Open Sans', sans-serif;
-  color: #34495e;
+  color: var(--dark);
   line-height: 1.6;
 }
 
 .about-text h3 {
-  color: #2980b9;
+  color: var(--primary);
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
@@ -375,7 +375,7 @@ button#volver:hover {
 
 .values-list li {
   font-weight: 600;
-  color: #27ae60;
+  color: var(--accent);
   margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
@@ -384,7 +384,7 @@ button#volver:hover {
 
 .values-list li i {
   margin-right: 0.6rem;
-  color: #27ae60;
+  color: var(--accent);
 }
 
 .about-image {
@@ -404,7 +404,7 @@ button#volver:hover {
   gap: 3rem;
   margin-top: 2rem;
   font-family: 'Poppins', sans-serif;
-  color: #34495e;
+  color: var(--dark);
 }
 
 .stat-item {
@@ -414,7 +414,7 @@ button#volver:hover {
 .stat-number {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #e67e22;
+  color: var(--secondary);
   display: block;
   margin-bottom: 0.3rem;
 }
@@ -425,7 +425,7 @@ button#volver:hover {
 
 .contact-form label {
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--dark);
 }
 
 .contact-form input,
@@ -437,44 +437,46 @@ button#volver:hover {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   resize: vertical;
+  background-color: var(--light);
+  color: var(--dark);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #2980b9;
+  border-color: var(--primary);
   outline: none;
   box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
 }
 
 .btn-submit {
-  background-color: #048ba5;
+  background-color: var(--primary);
   border: none;
   padding: 10px 24px;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 6px;
   transition: background-color 0.3s ease;
+  color: #fff;
 }
 
 .btn-submit:hover {
-  background-color: #1c5980;
+  background-color: var(--dark);
   cursor: pointer;
 }
-
 .contact-form {
   max-width: 500px;
   margin: 0 auto;
   padding: 2rem;
-  background: #f7f9fc;
+  background: var(--light);
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   font-family: 'Open Sans', sans-serif;
 }
 
 .contact-form label {
   display: block;
   font-weight: 700;
-  color: #34495e;
+  color: var(--dark);
   margin-bottom: 0.5rem;
   font-size: 1rem;
   user-select: none;
@@ -489,15 +491,16 @@ button#volver:hover {
   border-radius: 8px;
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
-  color: #2c3e50;
+  color: var(--dark);
   transition: all 0.3s ease;
   box-sizing: border-box;
   resize: vertical;
+  background-color: white;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #048ba5;
+  border-color: var(--primary);
   box-shadow: 0 0 8px rgba(41, 128, 185, 0.4);
   outline: none;
 }
@@ -510,7 +513,7 @@ button#volver:hover {
 
 .btn-submit {
   width: 100%;
-  background-color: #048ba5;
+  background-color: var(--primary);
   color: white;
   border: none;
   padding: 14px 0;
@@ -532,7 +535,7 @@ button#volver:hover {
 }
 
 .btn-submit:hover {
-  background-color: #1f5d8a;
+  background-color: var(--dark);
   transform: scale(1.05);
 }
 
@@ -552,9 +555,8 @@ button#volver:hover {
 
 .contact-form input[type="tel"] {
   font-style: normal;
-  color: #34495e;
+  color: var(--dark);
 }
-
 
 @media (max-width: 576px) {
   .contact-form {
@@ -563,7 +565,7 @@ button#volver:hover {
 }
 
 .contact-info h3 {
-  color: #048ba5;
+  color: var(--primary);
   margin-bottom: 1rem;
   font-family: 'Poppins', sans-serif;
 }
@@ -571,7 +573,7 @@ button#volver:hover {
 .contact-info p {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  color: #34495e;
+  color: var(--dark);
   margin-bottom: 0.8rem;
   display: flex;
   align-items: center;
@@ -579,25 +581,28 @@ button#volver:hover {
 
 .contact-info p i {
   margin-right: 0.6rem;
-  color: #048ba5;
+  color: var(--primary);
 }
 
 .map-container iframe {
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-.modal {
+.modal,
+.custom-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 90%;
-  height: 90%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
-  z-index: 999;
-  animation: fadeIn 0.3s ease-out;
+  z-index: 9999;
+  padding: 1rem;
+  display: none;
+  overflow-y: auto;
 }
 
 .modal.show,
@@ -605,29 +610,34 @@ button#volver:hover {
   display: flex;
 }
 
-.modal-content {
-  background: #fff;
+.modal-content,
+.custom-modal-content {
+  background: white;
   padding: 2rem;
   border-radius: 1rem;
-  max-width: 600px;
+  max-width: 800px;
   width: 90%;
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   animation: scaleIn 0.3s ease-out;
 }
 
+.custom-modal-content {
+  animation: fadeInUp 0.3s ease-out;
+}
+
 .modal-close {
   position: absolute;
   top: 1rem;
-  right: 1.2rem;
+  right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   color: #888;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .modal-close:hover {
-  color: #333;
+  color: var(--dark);
 }
 
 .detalle-img {
@@ -641,17 +651,17 @@ button#volver:hover {
 .btn-solicitar {
   margin-top: 1.5rem;
   padding: 0.8rem 1.5rem;
-  background-color: #4caf50;
+  background-color: var(--success);
   color: white;
   font-weight: bold;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .btn-solicitar:hover {
-  background-color: #45a049;
+  background-color: #3e9442; /* más oscuro */
 }
 
 @keyframes fadeIn {
@@ -668,45 +678,6 @@ button#volver:hover {
     transform: scale(1);
     opacity: 1;
   }
-}
-
-.custom-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.7);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-.custom-modal-content {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  position: relative;
-  max-width: 800px;
-  width: 100%;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  animation: fadeInUp 0.3s ease-out;
-}
-
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #888;
-}
-
-.modal-close:hover {
-  color: #000;
 }
 
 @keyframes fadeInUp {
