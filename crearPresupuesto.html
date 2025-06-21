@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Presupuesto | IDW S.A</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <header class="sticky-top bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="index.html">IDW S.A</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="institucional.html">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="contacto.html">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link px-3 py-2 rounded-5" href="login.html">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <h2 class="display-5 fw-bold mb-4">Armá tu Presupuesto</h2>
+      
+      <div class="row g-5">
+        <div class="col-lg-7">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white"><h3 class="h5 mb-0 d-flex align-items-center"><span class="badge bg-primary me-3">1</span> Salón Elegido</h3></div>
+            <div id="salon-seleccionado-container"><div class="text-center p-5"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div></div></div>
+          </div>
+
+          <div class="card shadow-sm">
+             <div class="card-header bg-dark text-white"><h3 class="h5 mb-0 d-flex align-items-center"><span class="badge bg-primary me-3">2</span> Servicios Adicionales</h3></div>
+            <div class="card-body">
+                <p>Personalizá tu fiesta agregando los servicios que más te gusten.</p>
+                <button id="btn-mostrar-servicios" class="btn btn-outline-primary w-100"><i class="fas fa-plus-circle me-2"></i>Agregar o Quitar Servicios</button>
+                <div id="servicios-container" class="list-group mt-4 d-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card shadow-sm sticky-top" style="top: 100px;">
+            <div class="card-header bg-dark text-white"><h3 class="h5 mb-0 d-flex align-items-center"><span class="badge bg-primary me-3">3</span> Tus Datos y Reserva</h3></div>
+            <div class="card-body p-4">
+              <form id="formulario-presupuesto" novalidate>
+                <div class="mb-3"><label for="nombre-apellido" class="form-label">Nombre y Apellido</label><input type="text" id="nombre-apellido" class="form-control" required></div>
+                <div class="mb-3"><label for="whatsapp" class="form-label">Número de WhatsApp</label><input type="tel" id="whatsapp" class="form-control" placeholder="Ej: 1122334455" required></div>
+                <div class="mb-3"><label for="email" class="form-label">Correo Electrónico</label><input type="email" id="email" class="form-control" placeholder="Ej: tu@email.com" required></div>
+                <div class="mb-3"><label for="fecha-evento" class="form-label">Fecha del Evento</label><input type="date" id="fecha-evento" class="form-control" required></div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <label for="hora-inicio" class="form-label">Hora de Inicio</label>
+                    <input type="time" id="hora-inicio" class="form-control" min="08:00" max="23:59" required>
+                  </div>
+                  <div class="col-6">
+                    <label for="hora-fin" class="form-label">Hora de Fin</label>
+                    <input type="time" id="hora-fin" class="form-control" min="08:00" max="23:59" required>
+                  </div>
+                </div>
+                <div id="horarios-ocupados"></div>
+                <div class="mb-3"><label for="tematica" class="form-label">Temática de la Fiesta</label><input type="text" id="tematica" class="form-control" placeholder="Ej:cumpleaños, quinceañeras, eventos corporativos, graduaciones, bautizos, fiestas temáticas y bailes" required></div>
+                <hr class="my-4">
+                <div class="d-flex justify-content-between align-items-center mb-3"><span class="fs-5 fw-bold">Total Estimado:</span><span id="valor-total" class="fs-4 fw-bold text-primary">$0</span></div>
+                <button type="submit" class="btn btn-primary w-100 py-2 fs-5">Confirmar y Guardar Presupuesto</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0"><h5 class="text-uppercase fw-bold d-flex align-items-center">IDW S.A</h5><p class="mt-2 text-white-50">Organizamos eventos infantiles únicos. Tu fiesta, nuestro compromiso.</p></div>
+        <div class="col-md-4 mb-4 mb-md-0"><h6 class="text-uppercase fw-bold mb-3">Navegación</h6><ul class="list-unstyled"><li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li><li class="mb-2"><a href="institucional.html" class="text-white-50 text-decoration-none">Nosotros</a></li><li class="mb-2"><a href="contacto.html" class="text-white-50 text-decoration-none">Contacto</a></li><li class="mb-2"><a href="login.html" class="text-white-50 text-decoration-none">Administración</a></li></ul></div>
+        <div class="col-md-4"><h6 class="text-uppercase fw-bold mb-3">Seguinos</h6><div class="d-flex mb-3"><a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook"></i></a><a href="#" class="text-white me-3 fs-5"><i class="fab fa-instagram"></i></a><a href="#" class="text-white fs-5"><i class="fab fa-whatsapp"></i></a></div></div>
+      </div>
+      <hr class="my-4 border-secondary">
+      <div class="text-center pt-2"><p class="mb-0 text-white-50 small">© 2025 IDW S.A - Todos los derechos reservados</p></div>
+    </div>
+  </footer>
+
+  <!-- Modal de Confirmación de Reserva -->
+  <div class="modal fade" id="modalConfirmacionReserva" tabindex="-1" aria-labelledby="modalConfirmacionReservaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="modalConfirmacionReservaLabel">Confirmá tu Reserva</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="resumen-reserva-visual">
+          <!-- El resumen visual se cargará por JS -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+          <button type="button" class="btn btn-success" id="btn-confirmar-reserva-final">Confirmar y Guardar Reserva</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/crearPresupuesto.js"></script>
+</body>
+</html>

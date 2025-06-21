@@ -13,6 +13,4 @@
 ### - Sergio Zemborain
 
 
-==> Para el logueo del administrador :
-Usuario: admin
-Contraseña: 1234
+
